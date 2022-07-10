@@ -1,0 +1,19 @@
+Using Bit manupilating
+
+
+class Solution
+{
+
+    static boolean iSPowerOf2(int n)
+    {
+        return (n & n-1) ==0;
+    }
+    public static void main(String[] args) {
+        System.out.println(iSPowerOf2(2));
+        System.out.println(iSPowerOf2(3));
+    }
+}
+
+output 
+true
+false
