@@ -1,0 +1,17 @@
+We will do using bit wise operator
+
+class Solution
+{
+    static boolean oddOrEven(int n)
+    {
+      // here this means if using and operator will see if we get 0 as 0 indicated and-ing will get it 0 otherise 1 if its  odd  
+        return (n & 1) == 0;
+    }
+    public static void main(String[] args) {
+    // prints false
+        System.out.println(oddOrEven(3));
+        
+     // prints true
+     System.out.println(oddOrEven(32));
+    }
+}
