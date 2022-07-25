@@ -1,0 +1,32 @@
+Basic Apporach
+
+import javax.print.DocFlavor;
+import java.net.CookieHandler;
+import java.util.*;
+
+class Solution
+{
+    public static boolean isMatch(String s, String p) {
+        boolean isFound=false;
+        for(int i =0;i<= s.length()- p.length();i++)
+        {
+            isFound = true;
+            for(int j =0;j<p.length();j++)
+            {
+                if(s.charAt(i+j)!= p.charAt(j))
+                {
+                    isFound = false;
+                    break;
+                }
+            }
+        }
+        return isFound;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = "abcfg";
+        String p = "efg";
+        System.out.println(isMatch(s,p));
+
+    }
+}
