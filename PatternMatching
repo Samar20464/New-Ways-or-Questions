@@ -32,3 +32,77 @@ class Solution
 }
 
 Approach 2: KMP Alogo
+import javax.print.DocFlavor;
+import java.net.CookieHandler;
+import java.util.*;
+
+class Solution
+{
+    public static  int[] getLps(String pattern)
+    {
+        int len = pattern.length();
+        int[] lps = new int[len];
+
+        lps[0] = 0;
+        int i = 1;
+        int j =0;
+        while (i < len)
+        {
+            if(pattern.charAt(i)==pattern.charAt(j))
+            {
+                lps[i] = j +1;
+                i++;
+                j++;
+            }
+            else
+            {
+                if(j!=0)
+                {
+                    j = lps[j-1];
+                }
+                else
+                {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+        return lps;
+    }
+    public static boolean kmpSearch(String text,String pattern)
+    {
+        int lenText = text.length();
+        int lenPat = pattern.length();
+
+        int i =0;
+        int j =0;
+        int[] lps = getLps(pattern);
+        while (i < lenText && j < lenPat)
+        {
+            if(text.charAt(i) == pattern.charAt(j))
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                if(j!=0)
+                {
+                    j = lps[j-1];
+                }
+                else
+                {
+                    i++;
+                }
+            }
+        }
+        return j==lenPat;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = "abcefg";
+        String p = "efg";
+        System.out.println(kmpSearch(s,p));
+
+    }
+}
