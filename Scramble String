@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isScramble(String s1, String s2) {
+        if(s1.length() != s2.length())
+            return false;
+        int len = s1.length();
+
+        boolean[][][] f = new boolean[len][len][len+1];
+
+        for(int k =0;k<=len;k++)
+        {
+            for (int i =0;i+k<=len;i++)
+            {
+                for(int j =0;j+k<=len;j++)
+                {
+                    if(k==1)
+                        f[i][j][k] = s2.charAt(i)==s1.charAt(j);
+                    else for(int q =1;q<k&& !f[i][j][k];q++)
+                        f[i][j][k] = (f[i][j][q] &&  f[i+q][j+q][k-q]) || (f[i][j+k-q][q] && f[i+q][j][k-q]);
+                }
+            }
+        }
+        return f[0][0][len];
+    }
+}
