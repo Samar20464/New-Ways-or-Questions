@@ -1,0 +1,27 @@
+Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.
+
+using fast power algorithm
+
+class Solution {
+private static final int mod = 1337;
+    public int superPow(int a, int[] b) {
+        int ans = 1;
+        a = a%mod;
+        for (int i =0;i<b.length;i++)
+            ans =( pow(ans,10) * pow(a,b[i])) % mod;
+        return ans;
+    }
+
+    private static int pow(int a,int b)
+    {
+        if(b==1)
+            return a;
+        if(b==0)
+            return 1;
+        int x = pow(a,b/2);
+        x = (x*x) % mod;
+        if((b&1)==1)
+            x = (x*a) % mod;
+        return x;
+    }
+}
